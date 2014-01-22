@@ -1,8 +1,8 @@
 //
 //  User.m
-//  MU107HW2
+//  Marshrutki 2.0
 //
-//  Created by Monro on 19.01.14.
+//  Created by Monro on 22.01.14.
 //  Copyright (c) 2014 Andrey Starostenko. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 @implementation User
 
-+(User *)userWithName:(NSString *)name andPassword:(NSString *)password{
++(instancetype)userWithName:(NSString *)name andPassword:(NSString *)password{
     User *user = [[User alloc] init];
     user.userName = name;
     user.password = password;

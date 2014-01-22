@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  MU107HW2
+//  Marshrutki 2.0
 //
-//  Created by Monro on 19.01.14.
+//  Created by Monro on 22.01.14.
 //  Copyright (c) 2014 Andrey Starostenko. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "User.h"
 
 @interface LoginViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *textLogin;
 @property (weak, nonatomic) IBOutlet UITextField *textPassword;
 
@@ -20,20 +21,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)actionLogin:(UIButton *)sender {
-    
     NSLog(@"login: %@", self.textLogin.text);
     NSLog(@"password: %@", self.textPassword.text);
     
     User *user = [User userWithName:self.textLogin.text andPassword:self.textPassword.text];
     [user login];
-    
 }
 
 @end

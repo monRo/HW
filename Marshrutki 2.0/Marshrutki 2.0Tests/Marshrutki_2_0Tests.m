@@ -1,18 +1,18 @@
 //
-//  MU107HW2Tests.m
-//  MU107HW2Tests
+//  Marshrutki_2_0Tests.m
+//  Marshrutki 2.0Tests
 //
-//  Created by Monro on 19.01.14.
+//  Created by Monro on 22.01.14.
 //  Copyright (c) 2014 Andrey Starostenko. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface MU107HW2Tests : XCTestCase
+@interface Marshrutki_2_0Tests : XCTestCase
 
 @end
 
-@implementation MU107HW2Tests
+@implementation Marshrutki_2_0Tests
 
 - (void)setUp
 {
