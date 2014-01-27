@@ -12,4 +12,6 @@
 
 @property(strong, nonatomic) NSString *name;
 
++(Route*)initRouteWithDictionary: (NSDictionary *) attributes;
+
 @end

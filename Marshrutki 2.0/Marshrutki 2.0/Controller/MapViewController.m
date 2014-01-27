@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "LoginViewController.h"
 
 @interface MapViewController ()
 
@@ -17,7 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    UIViewController *loginController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthNavigationController"];
+    
+    [self.navigationController presentViewController:loginController animated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,6 +31,8 @@
 }
 
 - (IBAction)longPress:(UILongPressGestureRecognizer *)sender {
-    NSLog(@"Long Tap!!!");
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Looong tap!");
+    }
 }
 @end

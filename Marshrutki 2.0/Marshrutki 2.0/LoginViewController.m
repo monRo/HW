@@ -24,6 +24,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+} // hide navigation bar
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -36,6 +43,8 @@
     
     User *user = [User userWithName:self.textLogin.text andPassword:self.textPassword.text];
     [user login];
+    
+    [self dismissViewControllerAnimated:YES completion:nil]; // see it later
 }
 
 @end
