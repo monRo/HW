@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Route;
+
 @interface MapViewController : UIViewController
 - (IBAction)longPress:(UILongPressGestureRecognizer *)sender;
+
+- (void)selectRoute:(Route *)selectedRoute;
 
 @end

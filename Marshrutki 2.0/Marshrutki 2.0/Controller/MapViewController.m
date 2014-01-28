@@ -8,8 +8,11 @@
 
 #import "MapViewController.h"
 #import "LoginViewController.h"
+#import "Route.h"
 
 @interface MapViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *labelRoute;
 
 @end
 
@@ -34,5 +37,9 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Looong tap!");
     }
+}
+
+-(void)selectRoute:(Route *)selectedRoute{
+    self.labelRoute.text = selectedRoute.name;
 }
 @end

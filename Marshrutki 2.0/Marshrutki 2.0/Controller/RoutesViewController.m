@@ -11,6 +11,8 @@
 #import "Route.h"
 #import <MBProgressHUD.h>
 #import "MySidePanelControllerViewController.h"
+#import "MapViewController.h"
+#import <UIViewController+JASidePanel.h>
 
 @interface RoutesViewController ()
 
@@ -39,7 +41,6 @@
         
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
         [self.tableView reloadData];
-        NSLog(@"%@", self.parentViewController);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -59,10 +60,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"You selected row: %@", cell.textLabel.text);
-    MySidePanelControllerViewController *sidePanelController = [[MySidePanelControllerViewController alloc]init];
-    [sidePanelController showCenterPanelAnimated:YES];
+    Route* route = (Route*)self.routes[indexPath.row];
+    [self.mapController selectRoute:route];
+    [self.sidePanelController showCenterPanelAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

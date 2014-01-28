@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MapViewController;
 
 @interface RoutesViewController : UITableViewController
+
+@property(strong, nonatomic) MapViewController* mapController;
 
 @end
