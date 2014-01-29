@@ -28,9 +28,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-    
-    [manager GET:@"http://marshrutki.com.ua/mu/routes.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    void(^mySuccesBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject){
         NSArray* rawRoute = (NSArray*)responseObject;
         
         self.routes = [[NSMutableArray alloc]init];
@@ -41,12 +39,17 @@
         
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
         [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    };
+    
+    void(^failureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
         NSLog(@"Error: %@", error);
-    }];
+    };
+
+    
+    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    [manager GET:@"http://marshrutki.com.ua/mu/routes.php" parameters:nil success: mySuccesBlock  failure:failureBlock];
 }
 
 - (void)didReceiveMemoryWarning
