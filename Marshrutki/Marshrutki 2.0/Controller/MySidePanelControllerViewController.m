@@ -8,7 +8,6 @@
 
 #import "MySidePanelControllerViewController.h"
 #import "MapViewController.h"
-#import "RoutesViewController.h"
 
 @interface MySidePanelControllerViewController ()
 
@@ -22,7 +21,7 @@
     MapViewController *mapController = (MapViewController *)[navigationController topViewController];
     RoutesViewController *routeCOntroller = [self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"];
     
-    routeCOntroller.mapController = mapController;
+    routeCOntroller.delegate = mapController;
     
     [self setLeftPanel:routeCOntroller];
     [self setCenterPanel:navigationController];

@@ -7,16 +7,17 @@
 //
 
 #import "RoutesViewController.h"
-#import <AFNetworking.h>
 #import "Route.h"
 #import <MBProgressHUD.h>
 #import "MySidePanelControllerViewController.h"
 #import "MapViewController.h"
+#import "MarshrutkiAPI.h"
 #import <UIViewController+JASidePanel.h>
 
 @interface RoutesViewController ()
 
-@property(strong, nonatomic) NSMutableArray* routes;
+@property(strong, nonatomic) NSArray* routes;
+@property(strong, nonatomic) NSMutableArray *favoritesRoutes;
 
 @end
 
@@ -26,30 +27,20 @@
 {
     [super viewDidLoad];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    void(^mySuccesBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject){
-        NSArray* rawRoute = (NSArray*)responseObject;
-        
-        self.routes = [[NSMutableArray alloc]init];
-        
-        for (NSDictionary* attributes in rawRoute) {
-            [self.routes addObject:[Route initRouteWithDictionary:attributes]];
-        }
-        
-        [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
-        [self.tableView reloadData];
-    };
-    
-    void(^failureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
-        NSLog(@"Error: %@", error);
-    };
+    self.tableView.backgroundColor = MENU_BACKGROUND_COLOR;
 
-    
     [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-    [manager GET:@"http://marshrutki.com.ua/mu/routes.php" parameters:nil success: mySuccesBlock  failure:failureBlock];
+    [[MarshrutkiAPI sharedClients] getRoutes:^(NSArray *routes, NSError *error){
+        self.routes = routes;
+        [self.tableView reloadData];
+        [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+    }params:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favoritesChanges) name:NOTIFICATION_FAV_CHANGED object:nil];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,19 +55,43 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     Route* route = (Route*)self.routes[indexPath.row];
-    [self.mapController selectRoute:route];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectRoute:)]) {
+        [self.delegate didSelectRoute:route];
+    }
+    
     [self.sidePanelController showCenterPanelAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     Route* route = (Route*)self.routes[indexPath.row];
+    
+    static NSString *CellIdentifier = @"Cell";
+    static NSString *FavCellIdentifier = @"FavCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:route.isFavorited?FavCellIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     cell.textLabel.text = route.name;
+    cell.detailTextLabel.text = route.price;
     
     return cell;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    view.backgroundColor = MENU_BACKGROUND_COLOR;
+    
+    return view;
+}
+
+-(void)favoritesChanges{
+    self.routes = [self.routes sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 isEqual:obj2];
+    }];
+    
+    [self.tableView reloadData];
+}
+
 
 @end

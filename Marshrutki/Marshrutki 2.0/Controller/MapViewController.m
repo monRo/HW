@@ -13,6 +13,8 @@
 @interface MapViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *labelRoute;
+@property(strong, nonatomic) UIBarButtonItem *favoriteBarButton;
+@property(strong, nonatomic) Route *currentRoute;
 
 @end
 
@@ -22,9 +24,8 @@
 {
     [super viewDidLoad];
 	
-    UIViewController *loginController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthNavigationController"];
-    
-    [self.navigationController presentViewController:loginController animated:NO completion:nil];
+    self.favoriteBarButton = [[UIBarButtonItem alloc] initWithTitle:@"★" style:UIBarButtonItemStyleBordered target:self action:@selector(favAction)];
+    self.navigationItem.rightBarButtonItem = self.favoriteBarButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +40,17 @@
     }
 }
 
--(void)selectRoute:(Route *)selectedRoute{
-    self.labelRoute.text = selectedRoute.name;
+-(void)didSelectRoute:(Route *)route{
+    self.title = route.name;
+    self.currentRoute = route;
+    self.favoriteBarButton.title = route.isFavorited ? @"☆" : @"★";
 }
+
+- (void)favAction{
+    self.currentRoute.isFavorited = !self.currentRoute.isFavorited;
+    self.favoriteBarButton.title = self.currentRoute.isFavorited ? @"☆" : @"★";
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FAV_CHANGED object:nil];
+}
+
 @end

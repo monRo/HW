@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "RoutesViewController.h"
 
 @class Route;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <RoutesMenuProtocol>
 - (IBAction)longPress:(UILongPressGestureRecognizer *)sender;
-
-- (void)selectRoute:(Route *)selectedRoute;
-
 @end
