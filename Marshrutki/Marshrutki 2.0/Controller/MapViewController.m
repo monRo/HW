@@ -26,6 +26,11 @@
 	
     self.favoriteBarButton = [[UIBarButtonItem alloc] initWithTitle:@"★" style:UIBarButtonItemStyleBordered target:self action:@selector(favAction)];
     self.navigationItem.rightBarButtonItem = self.favoriteBarButton;
+    
+    // смотреть
+    UINavigationController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthNavigationController"];
+    [self presentViewController:loginViewController animated:NO completion:nil];
+    // смотреть
 }
 
 - (void)didReceiveMemoryWarning

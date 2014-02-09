@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import <CoreData/CoreData.h>
 
 @interface MarshrutkiAPI : NSObject
+
+// Core Data
+@property (strong, nonatomic) NSManagedObjectContext *objectContext;
+@property (strong, nonatomic) NSManagedObjectModel *objectModel;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistenStore;
+// Core Data
 
 + (MarshrutkiAPI *) sharedClients;
 

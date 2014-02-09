@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9180806D189D73A40022BD57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9180806C189D73A40022BD57 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		918097A218A2BD22000145DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918097A118A2BD22000145DB /* CoreData.framework */; };
 		918237841890609200B03953 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918237831890609200B03953 /* Foundation.framework */; };
 		918237861890609200B03953 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918237851890609200B03953 /* CoreGraphics.framework */; };
 		918237881890609200B03953 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918237871890609200B03953 /* UIKit.framework */; };
@@ -22,9 +23,7 @@
 		918237A51890609200B03953 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918237871890609200B03953 /* UIKit.framework */; };
 		918237AD1890609200B03953 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 918237AB1890609200B03953 /* InfoPlist.strings */; };
 		918237AF1890609200B03953 /* Marshrutki_2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237AE1890609200B03953 /* Marshrutki_2_0Tests.m */; };
-		918237BD1890610700B03953 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237BC1890610700B03953 /* Route.m */; };
 		918237C01890615500B03953 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237BF1890615500B03953 /* Vehicle.m */; };
-		918237C31890618300B03953 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237C21890618300B03953 /* Bus.m */; };
 		918237C6189061A600B03953 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237C5189061A600B03953 /* User.m */; };
 		918237C91890639100B03953 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918237C81890639100B03953 /* MapViewController.m */; };
 		91826DA718957A5800926297 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91826DA618957A5800926297 /* RegisterViewController.m */; };
@@ -32,6 +31,9 @@
 		9184B19F1899851C002E507E /* MarshrutkiAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9184B19E1899851C002E507E /* MarshrutkiAPI.m */; };
 		91A2C0661895A0B700916DC5 /* MySidePanelControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A2C0651895A0B700916DC5 /* MySidePanelControllerViewController.m */; };
 		91A2C0691895A50A00916DC5 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A2C0681895A50A00916DC5 /* RoutesViewController.m */; };
+		91B7243418A2C35500B30945 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91B7243218A2C35500B30945 /* Model.xcdatamodeld */; };
+		91BDF2F818A416D400C49BF1 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDF2F718A416D400C49BF1 /* Route.m */; };
+		91BDF2FB18A416D400C49BF1 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDF2FA18A416D400C49BF1 /* Bus.m */; };
 		91D9146418957EB7006B6C2F /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D9146318957EB7006B6C2F /* ForgetViewController.m */; };
 		91D91466189586E5006B6C2F /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91D91465189586E5006B6C2F /* Unknown.jpg */; };
 		A763BFA289D0417D8B8E8734 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FEBDF9C5DE459C8ABCB11D /* libPods.a */; };
@@ -50,6 +52,7 @@
 /* Begin PBXFileReference section */
 		03FEBDF9C5DE459C8ABCB11D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9180806C189D73A40022BD57 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		918097A118A2BD22000145DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		918237801890609200B03953 /* Marshrutki 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marshrutki 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		918237831890609200B03953 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		918237851890609200B03953 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,12 +72,8 @@
 		918237AA1890609200B03953 /* Marshrutki 2.0Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Marshrutki 2.0Tests-Info.plist"; sourceTree = "<group>"; };
 		918237AC1890609200B03953 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		918237AE1890609200B03953 /* Marshrutki_2_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Marshrutki_2_0Tests.m; sourceTree = "<group>"; };
-		918237BB1890610700B03953 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route.h; sourceTree = "<group>"; };
-		918237BC1890610700B03953 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route.m; sourceTree = "<group>"; };
 		918237BE1890615500B03953 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vehicle.h; path = Model/Vehicle.h; sourceTree = "<group>"; };
 		918237BF1890615500B03953 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vehicle.m; path = Model/Vehicle.m; sourceTree = "<group>"; };
-		918237C11890618300B03953 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bus.h; path = Model/Bus.h; sourceTree = "<group>"; };
-		918237C21890618300B03953 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bus.m; path = Model/Bus.m; sourceTree = "<group>"; };
 		918237C4189061A600B03953 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
 		918237C5189061A600B03953 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
 		918237C71890639100B03953 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Controller/MapViewController.h; sourceTree = "<group>"; };
@@ -89,6 +88,11 @@
 		91A2C0651895A0B700916DC5 /* MySidePanelControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MySidePanelControllerViewController.m; path = Controller/MySidePanelControllerViewController.m; sourceTree = "<group>"; };
 		91A2C0671895A50A00916DC5 /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutesViewController.h; path = Controller/RoutesViewController.h; sourceTree = "<group>"; };
 		91A2C0681895A50A00916DC5 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutesViewController.m; path = Controller/RoutesViewController.m; sourceTree = "<group>"; };
+		91B7243318A2C35500B30945 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		91BDF2F618A416D300C49BF1 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route.h; sourceTree = "<group>"; };
+		91BDF2F718A416D400C49BF1 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route.m; sourceTree = "<group>"; };
+		91BDF2F918A416D400C49BF1 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bus.h; path = Model/Bus.h; sourceTree = "<group>"; };
+		91BDF2FA18A416D400C49BF1 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bus.m; path = Model/Bus.m; sourceTree = "<group>"; };
 		91D9146218957EB7006B6C2F /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetViewController.h; path = Controller/ForgetViewController.h; sourceTree = "<group>"; };
 		91D9146318957EB7006B6C2F /* ForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetViewController.m; path = Controller/ForgetViewController.m; sourceTree = "<group>"; };
 		91D91465189586E5006B6C2F /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918097A218A2BD22000145DB /* CoreData.framework in Frameworks */,
 				9183F0CF189E4D7E00CC7D0E /* CoreLocation.framework in Frameworks */,
 				918237861890609200B03953 /* CoreGraphics.framework in Frameworks */,
 				918237881890609200B03953 /* UIKit.framework in Frameworks */,
@@ -145,6 +150,7 @@
 		918237821890609200B03953 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				918097A118A2BD22000145DB /* CoreData.framework */,
 				9183F0CE189E4D7E00CC7D0E /* CoreLocation.framework */,
 				9180806C189D73A40022BD57 /* MapKit.framework */,
 				918237831890609200B03953 /* Foundation.framework */,
@@ -161,6 +167,7 @@
 			children = (
 				918237BA189060D800B03953 /* Controller */,
 				918237B8189060BD00B03953 /* Model */,
+				91B7243218A2C35500B30945 /* Model.xcdatamodeld */,
 				918237921890609200B03953 /* AppDelegate.h */,
 				918237931890609200B03953 /* AppDelegate.m */,
 				918237951890609200B03953 /* Main.storyboard */,
@@ -203,12 +210,12 @@
 		918237B8189060BD00B03953 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				918237BB1890610700B03953 /* Route.h */,
-				918237BC1890610700B03953 /* Route.m */,
+				91BDF2F918A416D400C49BF1 /* Bus.h */,
+				91BDF2FA18A416D400C49BF1 /* Bus.m */,
+				91BDF2F618A416D300C49BF1 /* Route.h */,
+				91BDF2F718A416D400C49BF1 /* Route.m */,
 				918237BE1890615500B03953 /* Vehicle.h */,
 				918237BF1890615500B03953 /* Vehicle.m */,
-				918237C11890618300B03953 /* Bus.h */,
-				918237C21890618300B03953 /* Bus.m */,
 				918237C4189061A600B03953 /* User.h */,
 				918237C5189061A600B03953 /* User.m */,
 				9184B19D1899851C002E507E /* MarshrutkiAPI.h */,
@@ -386,17 +393,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				91A2C0661895A0B700916DC5 /* MySidePanelControllerViewController.m in Sources */,
-				918237C31890618300B03953 /* Bus.m in Sources */,
 				91A2C0691895A50A00916DC5 /* RoutesViewController.m in Sources */,
 				9184B19F1899851C002E507E /* MarshrutkiAPI.m in Sources */,
+				91B7243418A2C35500B30945 /* Model.xcdatamodeld in Sources */,
 				91D9146418957EB7006B6C2F /* ForgetViewController.m in Sources */,
 				918237C6189061A600B03953 /* User.m in Sources */,
 				9182379A1890609200B03953 /* LoginViewController.m in Sources */,
+				91BDF2F818A416D400C49BF1 /* Route.m in Sources */,
 				918237C91890639100B03953 /* MapViewController.m in Sources */,
 				91826DA718957A5800926297 /* RegisterViewController.m in Sources */,
-				918237BD1890610700B03953 /* Route.m in Sources */,
 				918237941890609200B03953 /* AppDelegate.m in Sources */,
 				918237901890609200B03953 /* main.m in Sources */,
+				91BDF2FB18A416D400C49BF1 /* Bus.m in Sources */,
 				918237C01890615500B03953 /* Vehicle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +628,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91B7243218A2C35500B30945 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91B7243318A2C35500B30945 /* Model.xcdatamodel */,
+			);
+			currentVersion = 91B7243318A2C35500B30945 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 918237781890609200B03953 /* Project object */;
 }

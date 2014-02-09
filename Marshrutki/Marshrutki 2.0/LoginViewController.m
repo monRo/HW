@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "User.h"
+#import <FacebookSDK.h>
 
 @interface LoginViewController ()
 
@@ -22,6 +23,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginComplete) name:@"FACEBOOKTOKEN" object:nil];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -36,6 +42,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)facebookLogin:(UIButton *)sender {
+    
+    [FBSession renewSystemCredentials:^(ACAccountCredentialRenewResult result, NSError *error) {
+        [[FBSession activeSession] closeAndClearTokenInformation];
+        
+        [FBSession openActiveSessionWithPermissions:@[@"email"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            if (session.accessTokenData.accessToken) {
+                NSLog(@"%@", session.accessTokenData.accessToken);
+            }
+        }];
+    }];
+}
 
 - (IBAction)actionLogin:(UIButton *)sender {
     NSLog(@"login: %@", self.textLogin.text);
@@ -44,6 +62,10 @@
     User *user = [User userWithName:self.textLogin.text andPassword:self.textPassword.text];
     [user login];
     
+    [self dismissViewControllerAnimated:YES completion:nil]; // see it later
+}
+
+- (void)facebookLoginComplete{
     [self dismissViewControllerAnimated:YES completion:nil]; // see it later
 }
 

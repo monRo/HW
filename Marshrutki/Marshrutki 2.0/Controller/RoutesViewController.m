@@ -87,7 +87,9 @@
 
 -(void)favoritesChanges{
     self.routes = [self.routes sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj1 isEqual:obj2];
+        return [obj1 isFavorited] < [obj2 isFavorited];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isFavorite" ascending:NO];
+        self.routes = [self.routes sortedArrayUsingDescriptors:@[sortDescriptor]]; // учить внимательно!!
     }];
     
     [self.tableView reloadData];
